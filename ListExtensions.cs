@@ -10,5 +10,21 @@ namespace Reccy.ScriptExtensions
             var i = Random.Range(0, list.Count);
             return list[i];
         }
+
+        public static bool IsEqual<T>(this List<T> a, List<T> b)
+        {
+            if (a.Count != b.Count)
+                return false;
+
+            var comparer = EqualityComparer<T>.Default;
+
+            for (int i = 0; i < a.Count; ++i)
+            {
+                if (!comparer.Equals(a[i], b[i]))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
