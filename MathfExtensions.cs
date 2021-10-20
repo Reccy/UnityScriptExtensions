@@ -8,5 +8,10 @@ namespace Reccy.ScriptExtensions
         {
             return (Mathf.Abs(a - b) < t);
         }
+
+        public static int Mod(int a, int b)
+        {
+            return (a % b + b) % b;
+        }
     }
 }
