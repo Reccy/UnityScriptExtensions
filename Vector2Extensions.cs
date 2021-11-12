@@ -17,5 +17,13 @@ namespace Reccy.ScriptExtensions
         {
             return v.RotatedRad(Mathf.Deg2Rad * deg);
         }
+
+        public static Vector2 ClampBetween(this Vector2 v, Vector2 min, Vector2 max)
+        {
+            return new Vector3(
+                Mathf.Clamp(v.x, min.x, max.x),
+                Mathf.Clamp(v.y, min.y, max.y)
+            );
+        }
     }
 }
