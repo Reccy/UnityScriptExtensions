@@ -26,5 +26,25 @@ namespace Reccy.ScriptExtensions
 
             return true;
         }
+
+        public static void RemoveDuplicates<T>(this List<T> a, List<T> b)
+        {
+            List<int> removeIndices = new List<int>();
+            int accumulator = 0;
+
+            for (int i = 0; i < a.Count; ++i)
+            {
+                if (b.Contains(a[i]))
+                {
+                    removeIndices.Add(i - accumulator);
+                    accumulator++;
+                }
+            }
+
+            foreach (int i in removeIndices)
+            {
+                a.RemoveAt(i);
+            }
+        }
     }
 }
