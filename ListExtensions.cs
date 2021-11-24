@@ -46,5 +46,64 @@ namespace Reccy.ScriptExtensions
                 a.RemoveAt(i);
             }
         }
+
+        public static T First<T>(this List<T> a)
+        {
+            return a[0];
+        }
+
+        public static T Last<T>(this List<T> a)
+        {
+            return a[a.Count - 1];
+        }
+
+        public static T Smallest<T>(this List<T> a)
+        {
+            var comparer = Comparer<T>.Default;
+
+            T smallest = a[0];
+
+            for (int i = 0; i < a.Count; ++i)
+            {
+                if (comparer.Compare(a[i], smallest) == 1)
+                {
+                    smallest = a[i];
+                }
+            }
+
+            return smallest;
+        }
+
+        public static T Largest<T>(this List<T> a)
+        {
+            var comparer = Comparer<T>.Default;
+
+            T largest = a[0];
+
+            for (int i = 0; i < a.Count; ++i)
+            {
+                if (comparer.Compare(a[i], largest) == -1)
+                {
+                    largest = a[i];
+                }
+            }
+
+            return largest;
+        }
+
+        public static T Take<T>(this List<T> a)
+        {
+            int idx = a.Count - 1;
+
+            T result = a[idx];
+            a.RemoveAt(idx);
+
+            return result;
+        }
+
+        public static bool IsEmpty<T>(this List<T> a)
+        {
+            return a.Count == 0;
+        }
     }
 }
