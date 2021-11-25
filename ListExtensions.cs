@@ -105,5 +105,27 @@ namespace Reccy.ScriptExtensions
         {
             return a.Count == 0;
         }
+
+        public static T ClosestToZero<T>(this List<T> a, System.Func<T, float> f1)
+        {
+            float bestMatch = float.MaxValue;
+            T result = default(T);
+
+            foreach (var v in a)
+            {
+                float diff = f1.Invoke(v);
+
+                if (diff < bestMatch)
+                {
+                    result = v;
+                    bestMatch = diff;
+                }
+            }
+
+            if (a.IsEmpty())
+                Debug.LogWarning($"Returning default value of {result}, input list empty");
+
+            return result;
+        }
     }
 }

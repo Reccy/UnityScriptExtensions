@@ -26,5 +26,77 @@ namespace Reccy.ScriptExtensions
 
             return smallestKey;
         }
+
+        public static float MinValue<T>(this Dictionary<T, float> dict)
+        {
+            float smallestValue = float.MaxValue;
+
+            foreach(var kvp in dict)
+            {
+                T k = kvp.Key;
+                var v = kvp.Value;
+
+                if (v < smallestValue)
+                {
+                    smallestValue = v;
+                }
+            }
+
+            return smallestValue;
+        }
+
+        public static float MaxValue<T>(this Dictionary<T, float> dict)
+        {
+            float largestValue = float.MinValue;
+
+            foreach(var kvp in dict)
+            {
+                T k = kvp.Key;
+                var v = kvp.Value;
+
+                if (v > largestValue)
+                {
+                    largestValue = v;
+                }
+            }
+
+            return largestValue;
+        }
+
+        public static int MinValue<T>(this Dictionary<T, int> dict)
+        {
+            var smallestValue = int.MaxValue;
+
+            foreach (var kvp in dict)
+            {
+                T k = kvp.Key;
+                var v = kvp.Value;
+
+                if (v < smallestValue)
+                {
+                    smallestValue = v;
+                }
+            }
+
+            return smallestValue;
+        }
+
+        public static int MaxValue<T>(this Dictionary<T, int> dict)
+        {
+            var largestValue = int.MinValue;
+
+            foreach (var kvp in dict)
+            {
+                T k = kvp.Key;
+                var v = kvp.Value;
+
+                if (v > largestValue)
+                {
+                    largestValue = v;
+                }
+            }
+
+            return largestValue;
+        }
     }
 }
